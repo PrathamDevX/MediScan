@@ -1054,12 +1054,10 @@
             font-size: 1.1rem;
         }
     </style>
-    <!-- Add in head section -->
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places"></script>
-    <!-- Add this before closing head tag -->
+    <!-- Add OmniDimension Widget -->
     <script id="omnidimension-web-widget" 
             async 
-            src="https://backend.omnidim.io/web_widget.js?secret_key=3lYkHjtBEBeIXlkryTD_D2DKhaQXVqdJ8I1nDM2_oME">
+            src="https://backend.omnidim.io/web_widget.js?secret_key=6ce6f05ebd4201ff534a210fc4a7a7a2">
     </script>
 </head>
 <body>
@@ -1659,9 +1657,9 @@
         }
     });
 </script>
-<!-- Add this before closing body tag -->
+<!-- Add Widget Configuration before closing body tag -->
 <script>
-window.omnidimensionSettings = {
+    window.omnidimensionSettings = {
         primaryColor: '#2C7BE5',
         secondaryColor: '#12B886',
         textColor: '#1E2B3C',
@@ -1672,9 +1670,10 @@ window.omnidimensionSettings = {
         enableCommands: true,
         commands: {
             searchMedicine: function(params) {
-                const medicine = params.medicine;
-                document.getElementById('medicine').value = medicine;
-                document.getElementById('search-form').submit();
+                if (params.medicine) {
+                    document.getElementById('medicine').value = params.medicine;
+                    document.getElementById('search-form').submit();
+                }
             }
         }
     };
